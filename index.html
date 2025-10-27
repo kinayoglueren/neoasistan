@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoAsistan - Yapay Zeka Destekli Dijital Asistan</title>
+    <title>NeoAsistan - Profesyonel Dijital Sekreter Hizmeti</title>
     <style>
         * {
             margin: 0;
@@ -12,12 +12,13 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
+            --primary: #FF8C00;
+            --primary-dark: #FF7700;
+            --primary-light: #FFA500;
+            --dark: #1a1a1a;
+            --gray: #666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
         }
 
         body {
@@ -35,13 +36,12 @@
 
         /* Header & Navigation */
         header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            background: var(--white);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(255, 140, 0, 0.1);
         }
 
         nav {
@@ -54,10 +54,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
         }
 
         .nav-links {
@@ -78,18 +75,19 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
         }
 
         .cta-button:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
         }
 
         /* Hero Section */
@@ -98,7 +96,7 @@
             min-height: 90vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -138,7 +136,7 @@
 
         .hero-text p {
             font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 2rem;
         }
 
@@ -188,15 +186,15 @@
             50% { transform: translateY(-15px); }
         }
 
-        .hero-image img {
+        .hero-image svg {
             width: 100%;
-            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.2));
         }
 
         /* Features Section */
         .features {
             padding: 6rem 0;
-            background: var(--light);
+            background: var(--white);
         }
 
         .section-title {
@@ -220,22 +218,24 @@
         }
 
         .feature-card {
-            background: white;
+            background: var(--white);
             padding: 2.5rem;
             border-radius: 20px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.08);
             transition: all 0.3s;
+            border: 2px solid transparent;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 50px rgba(255, 140, 0, 0.2);
+            border-color: var(--primary);
         }
 
         .feature-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -255,10 +255,46 @@
             line-height: 1.8;
         }
 
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.15);
+        }
+
+        .benefit-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
         /* Stats Section */
         .stats {
             padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
         }
 
@@ -276,13 +312,55 @@
 
         .stat-item p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.95;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-item h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .step-item p {
+            color: var(--gray);
+            line-height: 1.8;
         }
 
         /* Pricing Section */
         .pricing {
             padding: 6rem 0;
-            background: var(--light);
+            background: var(--light-gray);
         }
 
         .pricing-grid {
@@ -299,17 +377,20 @@
             box-shadow: 0 5px 30px rgba(0,0,0,0.08);
             transition: all 0.3s;
             text-align: center;
+            border: 2px solid transparent;
         }
 
         .pricing-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 50px rgba(255, 140, 0, 0.2);
+            border-color: var(--primary);
         }
 
         .pricing-card.featured {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
             transform: scale(1.05);
+            border-color: var(--primary-dark);
         }
 
         .pricing-card h3 {
@@ -321,11 +402,16 @@
             font-size: 3rem;
             font-weight: bold;
             margin: 1.5rem 0;
+            color: var(--primary);
+        }
+
+        .pricing-card.featured .price {
+            color: white;
         }
 
         .price span {
             font-size: 1.2rem;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .features-list {
@@ -343,11 +429,26 @@
             border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
-        .pricing-card .btn-primary {
-            width: 100%;
-            display: block;
-            text-align: center;
-            margin-top: 2rem;
+        .pricing-btn {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background: white;
+            color: var(--primary);
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
         }
 
         /* Contact Section */
@@ -356,9 +457,49 @@
             background: white;
         }
 
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .contact-item .icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: var(--gray);
+        }
+
         .contact-form {
-            max-width: 600px;
-            margin: 3rem auto;
+            background: var(--light-gray);
+            padding: 2.5rem;
+            border-radius: 20px;
         }
 
         .form-group {
@@ -376,7 +517,7 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s;
@@ -390,11 +531,11 @@
 
         .form-group textarea {
             resize: vertical;
-            min-height: 150px;
+            min-height: 120px;
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
             padding: 1rem 3rem;
             border: none;
@@ -407,8 +548,9 @@
         }
 
         .submit-btn:hover {
+            background: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.3);
         }
 
         /* Footer */
@@ -428,6 +570,7 @@
         .footer-section h3 {
             margin-bottom: 1rem;
             font-size: 1.3rem;
+            color: var(--primary);
         }
 
         .footer-section ul {
@@ -445,7 +588,7 @@
         }
 
         .footer-section a:hover {
-            color: white;
+            color: var(--primary);
         }
 
         .footer-bottom {
@@ -475,7 +618,8 @@
                 display: none;
             }
 
-            .hero-content {
+            .hero-content,
+            .contact-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
@@ -498,6 +642,10 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .contact-item {
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -509,11 +657,11 @@
                 <div class="logo">NeoAsistan</div>
                 <ul class="nav-links">
                     <li><a href="#anasayfa">Ana Sayfa</a></li>
-                    <li><a href="#ozellikler">Özellikler</a></li>
+                    <li><a href="#hizmetler">Hizmetlerimiz</a></li>
                     <li><a href="#fiyatlar">Fiyatlar</a></li>
                     <li><a href="#iletisim">İletişim</a></li>
                 </ul>
-                <a href="#basvur" class="cta-button">Hemen Başla</a>
+                <a href="#iletisim" class="cta-button">Hemen Başlayın</a>
                 <button class="mobile-menu-btn">☰</button>
             </nav>
         </div>
@@ -524,27 +672,26 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Yapay Zeka ile Geleceği Şekillendirin</h1>
-                    <p>NeoAsistan ile işlerinizi otomatikleştirin, verimliliğinizi artırın ve dijital dönüşümünüzü hızlandırın.</p>
+                    <h1>Profesyonel Dijital Sekreter Hizmeti</h1>
+                    <p>Klinikler, sağlık merkezleri ve veteriner klinikleri için 7/24 kesintisiz sekreterlik hizmeti. Geleneksel sekreter maliyetinin çok altında, profesyonel çözümler.</p>
                     <div class="hero-buttons">
-                        <a href="#basvur" class="btn-primary">Ücretsiz Deneyin</a>
-                        <a href="#ozellikler" class="btn-secondary">Daha Fazla Bilgi</a>
+                        <a href="#iletisim" class="btn-primary">Ücretsiz Demo</a>
+                        <a href="#hizmetler" class="btn-secondary">Daha Fazla Bilgi</a>
                     </div>
                 </div>
                 <div class="hero-image">
                     <svg width="500" height="400" viewBox="0 0 500 400">
                         <defs>
                             <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
                             </linearGradient>
                         </defs>
                         <circle cx="250" cy="200" r="150" fill="url(#grad1)" opacity="0.2"/>
-                        <circle cx="250" cy="200" r="100" fill="white" opacity="0.9"/>
-                        <path d="M 250 150 L 250 250 M 200 200 L 300 200" stroke="url(#grad1)" stroke-width="8" stroke-linecap="round"/>
-                        <circle cx="220" cy="180" r="15" fill="url(#grad1)"/>
-                        <circle cx="280" cy="180" r="15" fill="url(#grad1)"/>
-                        <path d="M 220 230 Q 250 250 280 230" stroke="url(#grad1)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <circle cx="250" cy="200" r="100" fill="white" opacity="0.95"/>
+                        <path d="M 220 180 Q 220 160 240 160 Q 260 160 260 180 M 220 220 Q 240 240 260 220" stroke="#FF8C00" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <rect x="200" y="260" width="100" height="60" rx="10" fill="url(#grad1)" opacity="0.3"/>
+                        <path d="M 210 280 L 290 280 M 210 300 L 290 300" stroke="white" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                 </div>
             </div>
@@ -552,40 +699,95 @@
     </section>
 
     <!-- Features Section -->
-    <section id="ozellikler" class="features">
+    <section id="hizmetler" class="features">
         <div class="container">
-            <h2 class="section-title">Güçlü Özellikler</h2>
-            <p class="section-subtitle">İşinizi bir üst seviyeye taşıyacak özellikler</p>
+            <h2 class="section-title">Neden NeoAsistan?</h2>
+            <p class="section-subtitle">Sağlık sektörüne özel, profesyonel dijital sekreterlik çözümleri</p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>Yapay Zeka Desteği</h3>
-                    <p>Gelişmiş yapay zeka algoritmaları ile işlerinizi otomatikleştirin ve zaman kazanın.</p>
+                    <div class="feature-icon">📞</div>
+                    <h3>Otomatik Randevu Yönetimi</h3>
+                    <p>Hastalarınız 7/24 randevu alabilir, değiştirebilir veya iptal edebilir. Sistem otomatik olarak müsait saatleri gösterir ve onaylar.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Hızlı ve Güvenilir</h3>
-                    <p>Yüksek performanslı altyapımız ile kesintisiz ve hızlı hizmet deneyimleyin.</p>
+                    <div class="feature-icon">💬</div>
+                    <h3>Çok Kanallı İletişim</h3>
+                    <p>Telefon, WhatsApp, SMS ve e-posta üzerinden kesintisiz hizmet. Hastalarınız diledikleri kanaldan ulaşabilir.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Güvenli Veri</h3>
-                    <p>Verileriniz end-to-end şifreleme ile korunur. Gizliliğiniz bizim önceliğimizdir.</p>
+                    <div class="feature-icon">🔔</div>
+                    <h3>Akıllı Hatırlatmalar</h3>
+                    <p>Randevu hatırlatmaları, tedavi takipleri ve kontrol günleri için otomatik bildirimler. Unutulmuş randevular son bulur.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Detaylı Raporlama</h3>
-                    <p>Gelişmiş analitik araçları ile işlerinizi takip edin ve optimize edin.</p>
+                    <p>Randevu istatistikleri, hasta davranışları ve operasyonel verimlilik raporları. İşinizi daha iyi yönetin.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>7/24 Erişim</h3>
-                    <p>Her yerden, her zaman sisteminize erişin. Mobil uyumlu arayüz.</p>
+                    <div class="feature-icon">🔒</div>
+                    <h3>KVKK Uyumlu</h3>
+                    <p>Hasta verileriniz en yüksek güvenlik standartlarıyla korunur. Kişisel Verilerin Korunması Kanunu'na tam uyumluluk.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>Destek Ekibi</h3>
-                    <p>Uzman destek ekibimiz her zaman yanınızda. Hızlı ve etkili çözümler.</p>
+                    <div class="feature-icon">⚡</div>
+                    <h3>Kolay Entegrasyon</h3>
+                    <p>Mevcut sistemlerinize hızlı ve sorunsuz entegrasyon. Kurulum süreci sadece birkaç saat sürer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Avantajlarımız</h2>
+            <p class="section-subtitle">Geleneksel sekreterliğin tüm avantajları, hiçbir dezavantajı yok</p>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="icon">💰</div>
+                    <h3>%70 Maliyet Tasarrufu</h3>
+                    <p>Geleneksel sekreter maliyetinin çok altında profesyonel hizmet</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">⏰</div>
+                    <h3>7/24 Kesintisiz Hizmet</h3>
+                    <p>Tatil, hastalık veya mesai saati yok. Her zaman aktif</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🎯</div>
+                    <h3>Sıfır Hata Oranı</h3>
+                    <p>Unutulan randevular, yanlış kayıtlar son bulur</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">📈</div>
+                    <h3>Artan Verimlilik</h3>
+                    <p>Ekibiniz hasta bakımına odaklanır, rutin işler otomatik hallolur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Nasıl Çalışır?</h2>
+            <p class="section-subtitle">3 basit adımda başlayın</p>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>İletişime Geçin</h3>
+                    <p>Bizimle iletişime geçin, ihtiyaçlarınızı anlayalım ve size özel bir demo hazırlayalım.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>Hızlı Kurulum</h3>
+                    <p>Uzman ekibimiz sisteminizi kurar ve personellerinizi eğitir. Tüm süreç birkaç saat sürer.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Kullanmaya Başlayın</h3>
+                    <p>Artık dijital sekreteriniz aktif! 7/24 kesintisiz hizmet, sürekli destek ve güncellemeler.</p>
                 </div>
             </div>
         </div>
@@ -596,20 +798,20 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h2>10K+</h2>
+                    <h2>500+</h2>
                     <p>Mutlu Müşteri</p>
+                </div>
+                <div class="stat-item">
+                    <h2>50K+</h2>
+                    <p>Aylık Randevu</p>
                 </div>
                 <div class="stat-item">
                     <h2>99.9%</h2>
                     <p>Çalışma Süresi</p>
                 </div>
                 <div class="stat-item">
-                    <h2>50+</h2>
-                    <p>Ülke</p>
-                </div>
-                <div class="stat-item">
-                    <h2>24/7</h2>
-                    <p>Destek</p>
+                    <h2>%70</h2>
+                    <p>Maliyet Tasarrufu</p>
                 </div>
             </div>
         </div>
@@ -619,156 +821,38 @@
     <section id="fiyatlar" class="pricing">
         <div class="container">
             <h2 class="section-title">Fiyatlandırma Planları</h2>
-            <p class="section-subtitle">İhtiyacınıza uygun planı seçin</p>
+            <p class="section-subtitle">İhtiyacınıza uygun paketi seçin, geleneksel sekreter maliyetinin çok altında</p>
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <h3>Başlangıç</h3>
-                    <div class="price">₺299<span>/ay</span></div>
+                    <div class="price">₺2,499<span>/ay</span></div>
                     <ul class="features-list">
-                        <li>✓ 5 Kullanıcı</li>
-                        <li>✓ 10 GB Depolama</li>
-                        <li>✓ Temel Özellikler</li>
-                        <li>✓ E-posta Desteği</li>
-                        <li>✓ Aylık Raporlar</li>
+                        <li>✓ 500 randevu/ay</li>
+                        <li>✓ Telefon + WhatsApp desteği</li>
+                        <li>✓ Temel raporlama</li>
+                        <li>✓ Randevu hatırlatmaları</li>
+                        <li>✓ E-posta desteği</li>
+                        <li>✓ 1 Kullanıcı</li>
                     </ul>
-                    <a href="#basvur" class="btn-primary">Hemen Başla</a>
+                    <a href="#iletisim" class="pricing-btn">Hemen Başla</a>
                 </div>
                 <div class="pricing-card featured">
                     <h3>Profesyonel</h3>
-                    <div class="price">₺599<span>/ay</span></div>
+                    <div class="price">₺4,999<span>/ay</span></div>
                     <ul class="features-list">
-                        <li>✓ 20 Kullanıcı</li>
-                        <li>✓ 50 GB Depolama</li>
-                        <li>✓ Tüm Özellikler</li>
-                        <li>✓ Öncelikli Destek</li>
-                        <li>✓ Haftalık Raporlar</li>
-                        <li>✓ API Erişimi</li>
+                        <li>✓ 2000 randevu/ay</li>
+                        <li>✓ Tüm kanallar (Tel + WP + SMS)</li>
+                        <li>✓ Gelişmiş raporlama</li>
+                        <li>✓ Akıllı hatırlatmalar</li>
+                        <li>✓ Öncelikli destek</li>
+                        <li>✓ 5 Kullanıcı</li>
+                        <li>✓ Özel entegrasyonlar</li>
                     </ul>
-                    <a href="#basvur" class="btn-primary">Hemen Başla</a>
+                    <a href="#iletisim" class="pricing-btn">En Popüler</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Kurumsal</h3>
-                    <div class="price">₺1,299<span>/ay</span></div>
+                    <div class="price">₺9,999<span>/ay</span></div>
                     <ul class="features-list">
-                        <li>✓ Sınırsız Kullanıcı</li>
-                        <li>✓ 500 GB Depolama</li>
-                        <li>✓ Premium Özellikler</li>
-                        <li>✓ 7/24 Destek</li>
-                        <li>✓ Günlük Raporlar</li>
-                        <li>✓ Özel Entegrasyonlar</li>
-                        <li>✓ Özel Eğitim</li>
-                    </ul>
-                    <a href="#basvur" class="btn-primary">Hemen Başla</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="iletisim" class="contact">
-        <div class="container">
-            <h2 class="section-title">Bizimle İletişime Geçin</h2>
-            <p class="section-subtitle">Sorularınız için buradayız</p>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Adınız Soyadınız</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">E-posta Adresiniz</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Telefon Numaranız</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="message">Mesajınız</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Gönder</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>NeoAsistan</h3>
-                    <p>Yapay zeka destekli dijital asistan çözümleri ile işlerinizi kolaylaştırın.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Hızlı Linkler</h3>
-                    <ul>
-                        <li><a href="#anasayfa">Ana Sayfa</a></li>
-                        <li><a href="#ozellikler">Özellikler</a></li>
-                        <li><a href="#fiyatlar">Fiyatlar</a></li>
-                        <li><a href="#iletisim">İletişim</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Destek</h3>
-                    <ul>
-                        <li><a href="#">SSS</a></li>
-                        <li><a href="#">Dokümantasyon</a></li>
-                        <li><a href="#">Kullanım Koşulları</a></li>
-                        <li><a href="#">Gizlilik Politikası</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>İletişim</h3>
-                    <ul>
-                        <li>📧 info@neoasistan.site</li>
-                        <li>📞 +90 (555) 123 45 67</li>
-                        <li>📍 İstanbul, Türkiye</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 NeoAsistan. Tüm hakları saklıdır.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission
-        function handleSubmit(e) {
-            e.preventDefault();
-            alert('Mesajınız alındı! En kısa sürede sizinle iletişime geçeceğiz.');
-            e.target.reset();
-        }
-
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Scroll animation
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
-            } else {
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            }
-        });
-    </script>
-</body>
-</html>
+                        <li>✓ Sınırsız randevu</li>
+                        <li>✓ T
