@@ -54,10 +54,13 @@
             padding: 8px 24px;
             border: 2px solid #e0e0e0;
             border-radius: 25px;
-            text-decoration: none;
             color: #2d3748;
             font-weight: 500;
             transition: all 0.3s;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
         }
 
         .login:hover {
@@ -807,7 +810,25 @@
                 NeoAsistan
                 <div class="logo-sub">AI Sekreterlik Hizmetleri</div>
             </div>
-            <a href="#" class="login">Giriş</a>
+            <button id="loginBtn" class="login">Giriş Yap</button>
+        </div>
+
+        <!-- Login Modal -->
+        <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center;">
+            <div style="background: white; padding: 40px; border-radius: 12px; max-width: 400px; width: 90%; text-align: center;">
+                <h2 style="margin-bottom: 20px; color: #2d3748;">Giriş Yap</h2>
+                <p style="color: #4a5568; margin-bottom: 30px;">Gmail hesabınızla hızlıca giriş yapın</p>
+                <button id="googleLoginBtn" style="width: 100%; padding: 14px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s;">
+                    <svg width="20" height="20" viewBox="0 0 20 20">
+                        <path fill="#4285F4" d="M19.6 10.23c0-.82-.1-1.42-.25-2.05H10v3.72h5.5c-.15.96-.74 2.31-2.04 3.22v2.45h3.16c1.89-1.73 2.98-4.3 2.98-7.34z"/>
+                        <path fill="#34A853" d="M13.46 15.13c-.83.59-1.96 1-3.46 1-2.64 0-4.88-1.74-5.68-4.15H1.07v2.52C2.72 17.75 6.09 20 10 20c2.7 0 4.96-.89 6.62-2.42l-3.16-2.45z"/>
+                        <path fill="#FBBC05" d="M3.99 10c0-.69.12-1.35.32-1.97V5.51H1.07A9.973 9.973 0 000 10c0 1.61.39 3.14 1.07 4.49l3.24-2.52c-.2-.62-.32-1.28-.32-1.97z"/>
+                        <path fill="#EA4335" d="M10 3.88c1.88 0 3.13.81 3.85 1.48l2.84-2.76C14.96.99 12.7 0 10 0 6.09 0 2.72 2.25 1.07 5.51l3.24 2.52C5.12 5.62 7.36 3.88 10 3.88z"/>
+                    </svg>
+                    Gmail ile Giriş Yap
+                </button>
+                <button id="closeModalBtn" style="margin-top: 20px; background: none; border: none; color: #4a5568; cursor: pointer; font-size: 14px;">İptal</button>
+            </div>
         </div>
     </header>
 
@@ -836,20 +857,20 @@
     <!-- Stats Section -->
     <section class="stats">
         <div class="stat-item">
-            <h2>96%</h2>
-            <p>Rutin İş Sorguları AI Tarafından Yönetiliyor</p>
+            <h2>7/24</h2>
+            <p>Kesintisiz Hizmet</p>
         </div>
         <div class="stat-item">
-            <h2>22%</h2>
-            <p>İşletmelerin Kaçırdığı Ortalama Arama Sayısı</p>
+            <h2>Anında</h2>
+            <p>Otomatik Yanıt</p>
         </div>
         <div class="stat-item">
-            <h2>80%</h2>
-            <p>İş İletişiminin Telefon Üzerinden Gerçekleşmesi</p>
+            <h2>Akıllı</h2>
+            <p>AI Destekli Sistem</p>
         </div>
         <div class="stat-item">
-            <h2>10x</h2>
-            <p>Daha Hızlı Yanıt Süresi</p>
+            <h2>Kolay</h2>
+            <p>Entegrasyon</p>
         </div>
     </section>
 
