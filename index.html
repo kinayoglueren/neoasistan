@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoAsistan - AI Destekli Sekreterlik Hizmetleri</title>
+    <title>NeoAsistan - Yapay Zekâ Destekli Mesajlaşma Asistanı</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #ff914d; /* NeoAsistan Turuncusu */
+            --dark-color: #111111;
+            --light-color: #ffffff;
+            --text-color: #333333;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* Genel Sıfırlama ve Font */
         * {
             margin: 0;
             padding: 0;
@@ -13,26 +23,64 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-            color: #2d3748;
+            font-family: var(--font-family);
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
         }
 
-        /* Header */
-        header {
-            background: white;
+        h1, h2, h3 {
+            color: var(--dark-color);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+        
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #e07f44; /* Biraz daha koyu turuncu */
+            transform: translateY(-2px);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* Header / Navbar */
+        .header {
             padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: var(--light-color);
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -41,995 +89,475 @@
         .logo {
             font-size: 28px;
             font-weight: 700;
-            color: #1a73e8;
+            color: var(--dark-color);
         }
 
-        .logo-sub {
-            font-size: 11px;
-            color: #666;
-            font-weight: 400;
-        }
-
-        .login {
-            padding: 8px 24px;
-            border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            color: #2d3748;
-            font-weight: 500;
-            transition: all 0.3s;
-            background: white;
-            cursor: pointer;
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .login:hover {
-            border-color: #1a73e8;
-            color: #1a73e8;
+        .logo span {
+            color: var(--primary-color);
         }
 
         /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
+        #hero {
+            background-color: #f7f7f7;
+            padding: 100px 0;
             text-align: center;
         }
 
-        .hero h1 {
-            font-size: 56px;
+        #hero .content {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        #hero h1 {
+            font-size: 48px;
             font-weight: 700;
-            color: #2d3748;
             margin-bottom: 20px;
-            line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: #4a5568;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: var(--text-color);
         }
 
-        .hero-buttons {
+        .visual-mockup {
+            width: 100%;
+            height: 400px;
+            background-color: #e5e5e5; /* Video/Mockup için gri yer tutucu */
+            border-radius: 10px;
+            margin-top: 40px;
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .btn-primary {
-            background: #1a73e8;
-            color: white;
-            padding: 14px 32px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background: #1557b0;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(26, 115, 232, 0.3);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #25D366;
-            padding: 14px 32px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid #25D366;
-            transition: all 0.3s;
-            display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            font-style: italic;
+            color: #777;
+        }
+        
+        /* Sorun -> Çözüm Bölümü */
+        #problem-solution {
+            background-color: var(--light-color);
+            text-align: center;
         }
 
-        .btn-secondary:hover {
-            background: #f0fff4;
+        #problem-solution .split-content {
+            display: flex;
+            gap: 40px;
+            text-align: left;
+            margin-top: 40px;
         }
 
-        .contact-info {
+        #problem-solution .problem, #problem-solution .solution {
+            flex: 1;
+            padding: 30px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        #problem-solution .problem {
+            background-color: #fcebeb; /* Hafif kırmızımsı - Sorun */
+            border: 2px solid #ff4d4d;
+        }
+        
+        #problem-solution .solution {
+            background-color: #f0fff0; /* Hafif yeşilimsi - Çözüm */
+            border: 2px solid var(--primary-color);
+        }
+
+        #problem-solution h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        /* Özellikler Bölümü */
+        #features {
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        /* Chat Demo Bölümü */
+        #chat-demo {
+            background-color: var(--light-color);
+        }
+
+        #chat-demo h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .chat-simulation {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #e5ddd5; /* WhatsApp Arkaplanına benzer */
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .user-message {
+            background-color: #dcf8c6; /* Kullanıcı (Müşteri) */
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .assistant-message {
+            background-color: var(--light-color); /* Asistan (NeoAsistan) */
+            margin-right: auto;
+            text-align: left;
+            border: 1px solid #eee;
+        }
+
+        .message small {
+            display: block;
+            font-size: 11px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Güven ve Kanıt Bölümü */
+        #trust {
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 30px;
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #4a5568;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Stats Section */
-        .stats {
-            max-width: 1200px;
-            margin: 0 auto 80px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item h2 {
-            font-size: 72px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 10px;
-        }
-
-        .stat-item p {
-            font-size: 15px;
-            color: #4a5568;
-            line-height: 1.6;
-        }
-
-        /* Features Section */
-        .features {
-            background: white;
-            padding: 80px 20px;
-        }
-
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 10px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 16px;
-            color: #4a5568;
-            margin-bottom: 60px;
-        }
-
-        .feature-box {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 30px;
-        }
-
-        .feature-box h3 {
-            font-size: 28px;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 20px;
-        }
-
-        .feature-box p {
-            color: #4a5568;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .feature-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .feature-list li {
-            padding: 8px 0;
-            color: #4a5568;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .feature-list li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #1a73e8;
-            font-size: 20px;
-        }
-
-        .demo-box {
-            background: #e3f2fd;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 30px;
-        }
-
-        .demo-box h4 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 15px;
-        }
-
-        .demo-box p {
-            color: #4a5568;
-            margin-bottom: 20px;
-        }
-
-        .call-btn {
-            background: #1a73e8;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-
-        .call-btn:hover {
-            background: #1557b0;
-        }
-
-        /* CRM Integration */
-        .crm-section {
-            padding: 80px 20px;
-            background: #f8f9fa;
-        }
-
-        .crm-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .crm-item {
+        .social-links a {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 15px;
-            color: #4a5568;
-        }
-
-        .crm-item:before {
-            content: "✓";
-            color: #10b981;
-            font-weight: 700;
             font-size: 18px;
-        }
-
-        /* Booking Section */
-        .booking-section {
-            background: #f8f9fa;
-            padding: 80px 20px;
-        }
-
-        .booking-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .booking-title {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 10px;
-        }
-
-        .booking-subtitle {
-            text-align: center;
-            font-size: 16px;
-            color: #4a5568;
-            margin-bottom: 50px;
-        }
-
-        .booking-container {
-            display: grid;
-            grid-template-columns: 380px 1fr;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .booking-left {
-            background: white;
-            padding: 40px;
-            border-right: 1px solid #e0e0e0;
-        }
-
-        .assistant-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #1a73e8, #4fc3f7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-
-        .booking-left h3 {
-            font-size: 16px;
-            color: #4a5568;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .booking-left h2 {
-            font-size: 26px;
             font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 25px;
+            color: var(--dark-color);
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a i {
+            color: var(--primary-color);
         }
 
-        .booking-details {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 25px;
+        .social-links a:hover {
+            background-color: var(--light-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Teklif Bölümü */
+        #offer {
+            text-align: center;
+            background-color: var(--light-color);
         }
 
-        .detail-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 14px;
-            color: #4a5568;
+        #offer .offer-box {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 50px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: 40px auto 0 auto;
         }
 
-        .detail-icon {
-            font-size: 16px;
-            margin-top: 2px;
+        #offer h2 {
+            color: var(--light-color);
+            font-size: 36px;
         }
 
-        .booking-description {
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-            color: #4a5568;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .booking-right {
-            padding: 40px;
-        }
-
-        .calendar-header {
+        #offer p {
             font-size: 20px;
-            font-weight: 600;
-            color: #2d3748;
             margin-bottom: 30px;
-        }
-
-        .month-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .month-nav button {
-            background: none;
-            border: none;
-            font-size: 22px;
-            color: #4a5568;
-            cursor: pointer;
-            padding: 5px 12px;
-            border-radius: 6px;
-            transition: background 0.2s;
-        }
-
-        .month-nav button:hover {
-            background: #f0f0f0;
-        }
-
-        .current-month {
-            font-size: 16px;
-            font-weight: 600;
-            color: #2d3748;
-        }
-
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-            margin-bottom: 25px;
-        }
-
-        .calendar-day-name {
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            color: #718096;
-            padding: 8px 0;
-            text-transform: uppercase;
-        }
-
-        .calendar-date {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s;
-            color: #2d3748;
-        }
-
-        .calendar-date:hover:not(.disabled):not(.empty) {
-            background: #f0f7ff;
-        }
-
-        .calendar-date.selected {
-            background: #1a73e8;
-            color: white;
-            font-weight: 600;
-        }
-
-        .calendar-date.today {
-            border: 2px solid #1a73e8;
-        }
-
-        .calendar-date.disabled {
-            color: #cbd5e1;
-            cursor: not-allowed;
-        }
-
-        .calendar-date.empty {
-            cursor: default;
-        }
-
-        .timezone {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            font-size: 13px;
-            color: #4a5568;
-            margin-bottom: 25px;
-        }
-
-        .time-slots {
-            display: none;
-        }
-
-        .time-slots.active {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            max-height: 300px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .time-slot {
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            background: white;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            color: #1a73e8;
-            transition: all 0.2s;
-        }
-
-        .time-slot:hover {
-            border-color: #1a73e8;
-            background: #f0f7ff;
-        }
-
-        .time-slot.selected {
-            background: #1a73e8;
-            color: white;
-            border-color: #1a73e8;
-        }
-
-        /* Form Section */
-        .form-section {
-            padding: 40px;
-            display: none;
-        }
-
-        .form-section.active {
-            display: block;
-        }
-
-        .back-button {
-            background: none;
-            border: none;
-            color: #1a73e8;
-            font-size: 14px;
-            cursor: pointer;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            padding: 5px 0;
-        }
-
-        .back-button:hover {
-            text-decoration: underline;
-        }
-
-        .form-field {
-            margin-bottom: 20px;
-        }
-
-        .form-field label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #2d3748;
-        }
-
-        .form-field input,
-        .form-field textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.2s;
-        }
-
-        .form-field input:focus,
-        .form-field textarea:focus {
-            outline: none;
-            border-color: #1a73e8;
-        }
-
-        .submit-button {
-            width: 100%;
-            padding: 14px;
-            background: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .submit-button:hover {
-            background: #1557b0;
-        }
-
-        /* Success Section */
-        .success-section {
-            padding: 60px 40px;
-            text-align: center;
-            display: none;
-        }
-
-        .success-section.active {
-            display: block;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #10b981;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
-            margin: 0 auto 25px;
-        }
-
-        .success-section h2 {
-            font-size: 28px;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 15px;
-        }
-
-        .success-section p {
-            color: #4a5568;
-            font-size: 15px;
-            margin-bottom: 10px;
-        }
-
-        /* FAQ Section */
-        .faq {
-            max-width: 900px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-
-        .faq h2 {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 50px;
-        }
-
-        .faq-item {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: #2d3748;
-            transition: background 0.2s;
-        }
-
-        .faq-question:hover {
-            background: #f8f9fa;
-        }
-
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s, padding 0.3s;
-            color: #4a5568;
-            line-height: 1.8;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 20px 20px;
         }
 
         /* Footer */
-        footer {
-            background: #2d3748;
-            color: white;
-            padding: 50px 20px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
             text-align: center;
+            padding: 40px 0;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--primary-color);
+            margin: 0 10px;
+        }
+        
+        /* Mobil Sabit CTA (Sticky CTA) */
+        .mobile-sticky-cta {
+            display: none; /* Masaüstünde gizle */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .footer-logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 20px;
+        .mobile-sticky-cta .cta-button {
+            width: 90%;
+            padding: 12px 20px;
+            font-size: 16px;
         }
 
-        .footer-contacts {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #cbd5e1;
-            font-size: 15px;
-        }
-
-        .footer-contact-item a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-contact-item a:hover {
-            color: white;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: #1a73e8;
-            transform: translateY(-3px);
-        }
-
-        footer p {
-            color: #94a3b8;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
+        /* ****************** */
+        /* RESPONSIVE TASARIM */
+        /* ****************** */
+        @media (max-width: 992px) {
+            #hero h1 {
+                font-size: 38px;
             }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr); /* Tablette 2 sütun */
             }
-
-            .stat-item h2 {
-                font-size: 48px;
+            #problem-solution .split-content {
+                flex-direction: column;
             }
-
-            .booking-container {
-                grid-template-columns: 1fr;
+        }
+        
+        @media (max-width: 600px) {
+            .section-padding {
+                padding: 60px 0;
             }
-
-            .booking-left {
-                border-right: none;
-                border-bottom: 1px solid #e0e0e0;
+            #hero h1 {
+                font-size: 30px;
+            }
+            #hero p {
+                font-size: 18px;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr; /* Mobilde tek sütun */
+            }
+            .header .cta-button {
+                display: none; /* Mobilde üst nav'daki CTA'yı gizle */
+            }
+            .mobile-sticky-cta {
+                display: block; /* Mobilde sticky CTA'yı göster */
+            }
+            .social-links {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                NeoAsistan
-                <div class="logo-sub">AI Sekreterlik Hizmetleri</div>
-            </div>
-            <button id="loginBtn" class="login">Giriş Yap</button>
-        </div>
 
-        <!-- Login Modal -->
-        <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center;">
-            <div style="background: white; padding: 40px; border-radius: 12px; max-width: 400px; width: 90%; text-align: center;">
-                <h2 style="margin-bottom: 20px; color: #2d3748;">Giriş Yap</h2>
-                <p style="color: #4a5568; margin-bottom: 30px;">Gmail hesabınızla hızlıca giriş yapın</p>
-                <button id="googleLoginBtn" style="width: 100%; padding: 14px; background: white; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s;">
-                    <svg width="20" height="20" viewBox="0 0 20 20">
-                        <path fill="#4285F4" d="M19.6 10.23c0-.82-.1-1.42-.25-2.05H10v3.72h5.5c-.15.96-.74 2.31-2.04 3.22v2.45h3.16c1.89-1.73 2.98-4.3 2.98-7.34z"/>
-                        <path fill="#34A853" d="M13.46 15.13c-.83.59-1.96 1-3.46 1-2.64 0-4.88-1.74-5.68-4.15H1.07v2.52C2.72 17.75 6.09 20 10 20c2.7 0 4.96-.89 6.62-2.42l-3.16-2.45z"/>
-                        <path fill="#FBBC05" d="M3.99 10c0-.69.12-1.35.32-1.97V5.51H1.07A9.973 9.973 0 000 10c0 1.61.39 3.14 1.07 4.49l3.24-2.52c-.2-.62-.32-1.28-.32-1.97z"/>
-                        <path fill="#EA4335" d="M10 3.88c1.88 0 3.13.81 3.85 1.48l2.84-2.76C14.96.99 12.7 0 10 0 6.09 0 2.72 2.25 1.07 5.51l3.24 2.52C5.12 5.62 7.36 3.88 10 3.88z"/>
-                    </svg>
-                    Gmail ile Giriş Yap
-                </button>
-                <button id="closeModalBtn" style="margin-top: 20px; background: none; border: none; color: #4a5568; cursor: pointer; font-size: 14px;">İptal</button>
-            </div>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Neo<span>Asistan</span></div>
+            <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Her Şeyi Yapabilen<br>AI Telefon Asistanları</h1>
-        <p>Müşterilerinizi asla kaçırmamak için en kaliteli yapay zeka destekli ses asistanlarını tasarlıyoruz. WhatsApp ve Instagram üzerinden otomatik randevu ve müşteri yönetimi sistemi ile işlerinizi kolaylaştırın!</p>
-        <div class="hero-buttons">
-            <a href="#booking" class="btn-primary">Hemen Başlayın</a>
-            <a href="https://wa.me/905518573293" class="btn-secondary" target="_blank">
-                <span>📱</span> WhatsApp ile İletişime Geç
-            </a>
-        </div>
-        <div class="contact-info">
-            <div class="contact-item">
-                <span>📞</span>
-                <span>+90 551 857 32 93</span>
-            </div>
-            <div class="contact-item">
-                <span>📱</span>
-                <span>WhatsApp & Instagram Entegrasyonu</span>
+    <section id="hero" class="section-padding">
+        <div class="container content">
+            <h1>Müşteri Kaybetmeyi Durdurun. NeoAsistan ile Tanışın.</h1>
+            <p>7/24 kesintisiz destek, sepet kurtarma ve randevu yönetimi. Yapay zekâ ile satış gücünüzü anında artırın.</p>
+            <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
+            
+            <div class="visual-mockup">
+                [Video / Sade Animasyon / Ekran Kaydı Mockup Alanı]
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stat-item">
-            <h2>7/24</h2>
-            <p>Kesintisiz Hizmet</p>
-        </div>
-        <div class="stat-item">
-            <h2>Anında</h2>
-            <p>Otomatik Yanıt</p>
-        </div>
-        <div class="stat-item">
-            <h2>Akıllı</h2>
-            <p>AI Destekli Sistem</p>
-        </div>
-        <div class="stat-item">
-            <h2>Kolay</h2>
-            <p>Entegrasyon</p>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="features-container">
-            <h2 class="section-title">Ses asistanı ne yapabilir?</h2>
-            <p class="section-subtitle">Bunlar sadece birkaç örnek 🤙</p>
-
-            <div class="feature-box">
-                <h3>Talepleri ve Soruları Yönetir</h3>
-                <p>AI asistanlarımız WhatsApp ve Instagram üzerinden gelen mesajları anında yanıtlar ve müşterilerinizle etkileşime geçer. Bu çok yönlülük, soruları yanıtlamaya, randevu almaya, toplantı ayarlamaya ve hatta önerilerde bulunmaya olanak tanır.</p>
-                <ul class="feature-list">
-                    <li>Yıldırım hızında yanıt süreleri</li>
-                    <li>7/24 erişilebilirlik</li>
-                    <li>WhatsApp Business entegrasyonu</li>
-                    <li>Instagram Direct Message otomasyonu</li>
-                    <li>Mevcut sistemlerinizle sorunsuz entegrasyon</li>
-                    <li>İşletmenizin tüm detaylarıyla eğitilmiş</li>
-                </ul>
-
-                <div class="demo-box">
-                    <h4>Deneyin!</h4>
-                    <p>WhatsApp üzerinden bizimle iletişime geçin ve AI asistanımızın nasıl çalıştığını deneyimleyin. Randevu alabilir, hizmetlerimiz hakkında soru sorabilirsiniz.</p>
-                    <a href="https://wa.me/905518573293" target="_blank" class="call-btn">WhatsApp: +90 551 857 32 93</a>
+    <section id="problem-solution" class="section-padding">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">İşletmenizin Büyümesini Engelleyen Sorun ve Çözümü</h2>
+            
+            <div class="split-content">
+                <div class="problem">
+                    <h3 style="color: #d32f2f;"><i class="fa-solid fa-clock-rotate-left"></i> Geç Yanıt, Kayıp Müşteri Demektir.</h3>
+                    <p>Araştırmalar, anlık yanıt bekleyen müşterilerin %80'inin, 10 dakikadan uzun süre bekletildiğinde vazgeçtiğini gösteriyor.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-xmark" style="color: #d32f2f;"></i> Gece gelen mesajlara yanıt verememek.</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #d32f2f;"></i> Tekrarlayan sorularla vakit kaybetmek.</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #d32f2f;"></i> Yoğunlukta randevu ve satış fırsatlarını kaçırmak.</li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="feature-box">
-                <h3>Sorunsuz CRM Entegrasyonu</h3>
-                <p>AI ses asistanlarımız, hasta iletişimini geliştirmek, randevu kaçırmalarını azaltmak ve planlamayı optimize etmek için CRM ve randevu sistemlerinizle sorunsuz bir şekilde entegre olur. Kaçırılan randevulara elveda deyin ve daha verimli, hasta dostu bir uygulamaya merhaba deyin.</p>
-                <ul class="feature-list">
-                    <li>En iyi CRM'lerle entegre olur</li>
-                    <li>Randevu kaçırmalarını azaltır</li>
-                    <li>Planlamayı optimize eder</li>
-                    <li>Hasta iletişimini geliştirir</li>
-                    <li>Uygulama verimliliğini artırır</li>
-                </ul>
-
-                <h4 style="margin-top: 30px; margin-bottom: 15px; font-size: 18px;">En İyi 10 CRM ile Uyumlu:</h4>
-                <div class="crm-grid">
-                    <div class="crm-item">n8n</div>
-                    <div class="crm-item">Make</div>
-                    <div class="crm-item">Google Calendar</div>
-                    <div class="crm-item">HubSpot</div>
-                    <div class="crm-item">Calendly</div>
-                    <div class="crm-item">Salesforce</div>
-                    <div class="crm-item">Zoho</div>
-                    <div class="crm-item">Microsoft Dynamics</div>
-                    <div class="crm-item">Pipedrive</div>
-                    <div class="crm-item">Freshworks</div>
+                <div class="solution">
+                    <h3 style="color: var(--primary-color);"><i class="fa-solid fa-robot"></i> NeoAsistan Farkı: Anlık, Akıllı, Kişiselleştirilmiş.</h3>
+                    <p>NeoAsistan, saniyeler içinde cevap verir. Müşteri geçmişini hatırlar ve her etkileşimi satışa dönüştürür.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check" style="color: #388e3c;"></i> 7/24 kesintisiz ve çok dilli destek.</li>
+                        <li><i class="fa-solid fa-check" style="color: #388e3c;"></i> Kendi verinizle eğitim, marka dilinizde konuşma.</li>
+                        <li><i class="fa-solid fa-check" style="color: #388e3c;"></i> Otomatik randevu, sepet kurtarma ve satış asistanlığı.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" class="booking-section">
-        <div class="booking-wrapper">
-            <h2 class="booking-title">Hadi Başlayalım</h2>
-            <p class="booking-subtitle">Lütfen Aşağıdan Bir Zaman Ayırtın 👇</p>
-
-            <div class="booking-container">
-                <!-- Left Panel -->
-                <div class="booking-left">
-                    <div class="assistant-icon">🤖</div>
-                    <h3>NeoAsistan Ekibi</h3>
-                    <h2>Keşif Çağrısı</h2>
-                    <div class="booking-details">
-                        <div class="detail-row">
-                            <span class="detail-icon">⏱️</span>
-                            <span>15 dakika</span>
-                        </div>
-                        <div class="detail-row">
-                            <span class="detail-icon">💻</span>
-                            <span>Web konferans detayları onay üzerine sağlanacaktır.</span>
-                        </div>
-                    </div>
-                    <div class="booking-description">
-                        Bu toplantıda özel ihtiyaçlarınızı ve ilgilendiğiniz çözümleri tartışacağız, ihtiyaçlarınıza en uygun çözümü bulmanızı sağlayacağız.
-                    </div>
+    <section id="features" class="section-padding">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 40px;">NeoAsistan'ın İşinize Güç Katacak Temel Yetenekleri</h2>
+            <div class="feature-grid">
+                
+                <div class="feature-card">
+                    <i class="fa-solid fa-brain"></i>
+                    <h4>Veriyle Eğitilmiş Yapay Zekâ</h4>
+                    <p>İşletmenizin kendi ürün, hizmet ve SSS verileriyle eğitilir. Marka dilinizde konuşur.</p>
                 </div>
-
-                <!-- Right Panel - Calendar -->
-                <div id="calendarView" class="booking-right">
-                    <h3 class="calendar-header">Tarih ve Saat Seçin</h3>
-
-                    <div class="month-nav">
-                        <button type="button" id="prevBtn">←</button>
-                        <span class="current-month" id="monthDisplay">Ekim 2025</span>
-                        <button type="button" id="nextBtn">→</button>
-                    </div>
-
-                    <div class="calendar" id="calendarGrid">
-                        <div class="calendar-day-name">Pzt</div>
-                        <div class="calendar-day-name">Sal</div>
-                        <div class="calendar-day-name">Çar</div>
-                        <div class="calendar-day-name">Per</div>
-                        <div class="calendar-day-name">Cum</div>
-                        <div class="calendar-day-name">Cmt</div>
-                        <div class="calendar-day-name">Paz</div>
-                    </div>
-
-                    <div class="timezone">
-                        <span>🌍</span>
-                        <span>Turkey Time (GMT+3:00)</span>
-                    </div>
-
-                    <div class="time-slots" id="timeSlots"></div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-memory"></i>
+                    <h4>Kişiselleştirilmiş İletişim</h4>
+                    <p>Müşteri geçmişini ve önceki konuşmaları hatırlar. Daha kişisel ve satış odaklı bir deneyim sunar.</p>
                 </div>
-
-                <!-- Form Section -->
-                <div id="formView" class="form-section">
-                    <button class="back-button" id="backButton">← Geri Dön</button>
-                    <h3 class="calendar-header">Bilgilerinizi Girin</h3>
-
-                    <form id="bookingForm">
-                        <div class="form-field">
-                            <label>İsim *</label>
-                            <input type="text" id="nameInput" required placeholder="Adınız">
-                        </div>
-                        <div class="form-field">
-                            <label>E-posta *</label>
-                            <input type="email" id="emailInput" required placeholder="ornek@email.com">
-                        </div>
-                        <div class="form-field">
-                            <label>Telefon</label>
-                            <input type="tel" id="phoneInput" placeholder="+90 5XX XXX XX XX">
-                        </div>
-                        <div class="form-field">
-                            <label>Şirket</label>
-                            <input type="text" id="companyInput" placeholder="Şirket Adınız">
-                        </div>
-                        <div class="form-field">
-                            <label>Ek Notlar</label>
-                            <textarea id="notesInput" rows="3" placeholder="Lütfen bize görüşmek istediğiniz konuları paylaşın..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">Randevu Ayarla</button>
-                    </form>
+                <div class="feature-card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h4>Randevu Yönetimi</h4>
+                    <p>Müşteri ile konuşurken randevu alır, takviminize işler ve hatırlatmaları otomatik yapar.</p>
                 </div>
-
-                <!-- Success Section -->
-                <div id="successView" class="success-section">
-                    <div class="success-icon">✓</div>
-                    <h2>Tebrikler!</h2>
-                    <p>Randevunuz başarıyla planlandı.</p>
-                    <p style="color: #10b981; font-weight: 600; margin-top: 10px;">Takvim davetiyesi e-posta adresinize gönderildi 📧</p>
+                <div class="feature-card">
+                    <i class="fa-solid fa-cart-arrow-down"></i>
+                    <h4>Sepet Kurtarma ve Satış</h4>
+                    <p>Terk edilmiş sepetleri hatırlar, ek sorular sorar ve aktif olarak satış sürecinizi destekler.</p>
                 </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    <h4>Çoklu Kanal Entegrasyonu</h4>
+                    <p>WhatsApp, Instagram, Telegram, TikTok, Web chat ve E-posta ile tam entegrasyon.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h4>Detaylı Raporlama</h4>
+                    <p>Müşteri etkileşimlerini, dönüşüm oranlarını ve performansını detaylı raporlarla sunar.</p>
+                </div>
+                
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq">
-        <h2>Sıkça Sorulan Sorular</h2>
-        <div class="faq-item">
-            <div class="faq-question">
-                Bu ses asistanları ne için iyidir?
-                <span>+</span>
+    <section id="chat-demo" class="section-padding">
+        <div class="container">
+            <h2 style="font-size: 36px;">Bir İnsan Gibi Konuşur, Bir Robot Hızıyla Çözüm Üretir.</h2>
+            <div class="chat-simulation">
+                
+                <div class="message user-message">
+                    Merhaba, yeni çıkan X model ayakkabının fiyatı ve stok durumu hakkında bilgi alabilir miyim?
+                    <small>18:25</small>
+                </div>
+                
+                <div class="message assistant-message">
+                    Merhaba! Ben NeoAsistan. Elbette yardımcı olabilirim. 😊 X modelinin güncel fiyatı **1850 TL** ve şu anda 36-44 arası tüm numaralarda stok mevcuttur. 
+                    <small>18:25</small>
+                </div>
+
+                <div class="message user-message">
+                    Harika. Geçen hafta sipariş ettiğim bir ürün vardı. O kargoya verilmiş miydi?
+                    <small>18:26</small>
+                </div>
+
+                <div class="message assistant-message">
+                    Hemen kontrol ediyorum. Sizi tanıyorum: Mehmet Bey, 12345 nolu siparişiniz dün kargoya verilmiştir ve takip numarası: **TRN6789**. <br>Yeni ayakkabı için randevu ile deneme yapmak ister misiniz?
+                    <small>18:26</small>
+                </div>
+                
+                <div class="message user-message">
+                    Randevu harika olur. Cuma 16:00 uygun mu?
+                    <small>18:27</small>
+                </div>
+                
+                <div class="message assistant-message" style="border-left: 3px solid var(--primary-color);">
+                    Cuma 16:00 sizin için rezerve edilmiştir. Kısa süre içinde onay e-postası alacaksınız. Başka bir sorunuz var mı?
+                    <small>18:27 - ⚡ Randevu Otomatik Kayıt Edildi</small>
+                </div>
+                
             </div>
-            <div class="faq-answer">
-                AI ses asistanlarımız müşteri aramalarını yanıtlamak, randevu almak, sık sorulan soruları cevaplamak ve 7/24 destek sağlam
+        </div>
+    </section>
+
+    <section id="trust" class="section-padding">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Güvenilir Çözüm Ortağınız: Bize Her Yerden Ulaşın</h2>
+            <p>NeoAsistan, yüzlerce işletmenin müşteri deneyimini dönüştürdü. Sorularınız için bize dilediğiniz kanaldan yazın.</p>
+            
+            <div style="margin-top: 50px; padding: 20px; border: 1px dashed #ddd; border-radius: 8px; color: #777;">
+                [Referanslar / İş Ortağı Logoları / Müşteri Yorumları Alanı]
+            </div>
+            
+            <div class="social-links">
+                <a href="https://wa.me/5518573293" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp: 551 857 3293</a>
+                <a href="https://instagram.com/neoasistan" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram: @neoasistan</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="offer" class="section-padding">
+        <div class="container">
+            <div class="offer-box">
+                <h2>3 Gün Ücretsiz Deneme + Kurulum Desteği</h2>
+                <p>NeoAsistan'ın işinize katacağı değeri **risk almadan** test edin. Tüm entegrasyon ve kurulum sürecinizde yanınızdayız.</p>
+                <a href="#offer" class="cta-button" style="background-color: var(--light-color); color: var(--dark-color);">Toplantı Randevusu Al</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="closing-cta" class="section-padding" style="text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 36px; margin-bottom: 30px;">İşletmenizi 7/24 Konuşan, Satış Odaklı Bir Asistana Dönüştürün.</h2>
+            <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 NeoAsistan. Tüm hakları saklıdır. <a href="#">Gizlilik Politikası</a> | <a href="#">Kullanım Şartları</a></p>
+        </div>
+    </footer>
+    
+    <div class="mobile-sticky-cta">
+        <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
+    </div>
+
+</body>
+</html>
