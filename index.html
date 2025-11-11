@@ -3,84 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoAsistan - Yapay Zekâ Destekli Mesajlaşma Asistanı</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>NeoAsistan - Yapay Zeka Destekli Mesajlaşma Asistanı</title>
     <style>
-        :root {
-            --primary-color: #ff914d; /* NeoAsistan Turuncusu */
-            --dark-color: #111111;
-            --light-color: #ffffff;
-            --text-color: #333333;
-            --font-family: 'Poppins', sans-serif;
-        }
-
-        /* Genel Sıfırlama ve Font */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #ff914d;
+            --dark: #1a1a1a;
+            --light: #ffffff;
+            --gray: #f5f5f5;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
         body {
-            font-family: var(--font-family);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            color: var(--dark-color);
-            line-height: 1.2;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: color 0.3s;
-        }
-        
-        /* Utility Classes */
         .container {
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
             padding: 0 20px;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: background-color 0.3s, transform 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            background-color: #e07f44; /* Biraz daha koyu turuncu */
-            transform: translateY(-2px);
-        }
-
-        .section-padding {
-            padding: 80px 0;
-        }
-
-        /* Header / Navbar */
-        .header {
-            padding: 20px 0;
-            background: var(--light-color);
-            border-bottom: 1px solid #eee;
-            position: sticky;
+        /* Navigation */
+        nav {
+            position: fixed;
             top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .header .container {
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -88,476 +53,744 @@
 
         .logo {
             font-size: 28px;
-            font-weight: 700;
-            color: var(--dark-color);
+            font-weight: 800;
+            color: var(--dark);
         }
 
         .logo span {
-            color: var(--primary-color);
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 145, 77, 0.3);
         }
 
         /* Hero Section */
-        #hero {
-            background-color: #f7f7f7;
-            padding: 100px 0;
-            text-align: center;
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            color: var(--dark);
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
         }
 
-        #hero .content {
-            max-width: 800px;
-            margin: auto;
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 145, 77, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
         }
 
-        #hero h1 {
-            font-size: 48px;
-            font-weight: 700;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 20px;
         }
 
-        #hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: var(--text-color);
+        .hero-text h1 span {
+            color: var(--primary);
         }
 
-        .visual-mockup {
-            width: 100%;
-            height: 400px;
-            background-color: #e5e5e5; /* Video/Mockup için gri yer tutucu */
-            border-radius: 10px;
-            margin-top: 40px;
+        .hero-text p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: var(--text-light);
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 145, 77, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 145, 77, 0.5);
+        }
+
+        .hero-visual {
+            background: rgba(26, 26, 26, 0.03);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-style: italic;
-            color: #777;
         }
-        
-        /* Sorun -> Çözüm Bölümü */
-        #problem-solution {
-            background-color: var(--light-color);
+
+        .demo-placeholder {
             text-align: center;
+            color: var(--text-light);
         }
 
-        #problem-solution .split-content {
-            display: flex;
-            gap: 40px;
-            text-align: left;
-            margin-top: 40px;
+        .demo-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
         }
 
-        #problem-solution .problem, #problem-solution .solution {
-            flex: 1;
-            padding: 30px;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        #problem-solution .problem {
-            background-color: #fcebeb; /* Hafif kırmızımsı - Sorun */
-            border: 2px solid #ff4d4d;
-        }
-        
-        #problem-solution .solution {
-            background-color: #f0fff0; /* Hafif yeşilimsi - Çözüm */
-            border: 2px solid var(--primary-color);
+        /* Problem Solution Section */
+        .problem-solution {
+            padding: 100px 0;
+            background: var(--light);
         }
 
-        #problem-solution h3 {
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 60px;
+            color: var(--dark);
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .ps-card {
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .problem-card {
+            background: #fff0e8;
+            border-left: 5px solid var(--primary);
+        }
+
+        .solution-card {
+            background: var(--gray);
+            border-left: 5px solid var(--dark);
+        }
+
+        .ps-card h3 {
             font-size: 28px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            color: var(--dark);
         }
 
-        /* Özellikler Bölümü */
-        #features {
-            background-color: #f7f7f7;
-            text-align: center;
+        .ps-card p {
+            font-size: 18px;
+            color: var(--text-light);
         }
 
-        .feature-grid {
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--gray);
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .feature-card {
-            padding: 30px;
-            background-color: var(--light-color);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            text-align: left;
-            transition: transform 0.3s;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
         }
 
-        .feature-card i {
-            font-size: 32px;
-            color: var(--primary-color);
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), #ff7a2d);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.25);
+        }
+
+        .feature-icon svg {
+            width: 36px;
+            height: 36px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
             margin-bottom: 15px;
+            color: var(--dark);
         }
 
-        .feature-card h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        
-        /* Chat Demo Bölümü */
-        #chat-demo {
-            background-color: var(--light-color);
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.6;
         }
 
-        #chat-demo h2 {
-            text-align: center;
-            margin-bottom: 40px;
+        /* Chat Demo Section */
+        .chat-demo {
+            padding: 100px 0;
+            background: var(--light);
         }
 
-        .chat-simulation {
-            max-width: 600px;
-            margin: auto;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+        .chat-container {
+            max-width: 500px;
+            margin: 60px auto 0;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .chat-header {
+            background: #075e54;
+            color: white;
             padding: 20px;
-            background-color: #e5ddd5; /* WhatsApp Arkaplanına benzer */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chat-avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .chat-info h4 {
+            font-size: 18px;
+        }
+
+        .chat-info p {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .chat-messages {
+            padding: 30px 20px;
+            background: #e5ddd5;
+            min-height: 400px;
         }
 
         .message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 18px;
-            margin-bottom: 10px;
-            position: relative;
+            margin-bottom: 15px;
+            display: flex;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 10px;
             font-size: 15px;
         }
 
-        .user-message {
-            background-color: #dcf8c6; /* Kullanıcı (Müşteri) */
-            margin-left: auto;
+        .message.bot .message-bubble {
+            background: white;
+            border-radius: 0 10px 10px 10px;
+        }
+
+        .message.user .message-bubble {
+            background: #dcf8c6;
+            border-radius: 10px 0 10px 10px;
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: #667781;
+            margin-top: 5px;
             text-align: right;
         }
 
-        .assistant-message {
-            background-color: var(--light-color); /* Asistan (NeoAsistan) */
-            margin-right: auto;
-            text-align: left;
-            border: 1px solid #eee;
-        }
-
-        .message small {
-            display: block;
-            font-size: 11px;
-            color: #777;
-            margin-top: 5px;
-        }
-
-        /* Güven ve Kanıt Bölümü */
-        #trust {
-            background-color: #f7f7f7;
+        /* Trust Section */
+        .trust {
+            padding: 100px 0;
+            background: var(--dark);
+            color: white;
             text-align: center;
         }
 
-        .social-links {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        .trust .section-title {
+            color: white;
         }
 
-        .social-links a {
+        .trust-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark-color);
-            padding: 10px 20px;
-            border: 1px solid #ddd;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
             border-radius: 50px;
-            transition: background-color 0.3s;
-        }
-        
-        .social-links a i {
-            color: var(--primary-color);
+            transition: background 0.3s;
         }
 
-        .social-links a:hover {
-            background-color: var(--light-color);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        .contact-item:hover {
+            background: rgba(255, 145, 77, 0.2);
         }
-        
-        /* Teklif Bölümü */
-        #offer {
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: var(--gray);
             text-align: center;
-            background-color: var(--light-color);
         }
 
-        #offer .offer-box {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 50px;
-            border-radius: 10px;
-            max-width: 700px;
-            margin: 40px auto 0 auto;
+        .pricing-card {
+            max-width: 600px;
+            margin: 60px auto 0;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
 
-        #offer h2 {
-            color: var(--light-color);
-            font-size: 36px;
-        }
-
-        #offer p {
-            font-size: 20px;
+        .pricing-badge {
+            background: var(--primary);
+            color: white;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
             margin-bottom: 30px;
         }
 
-        /* Footer */
-        .footer {
-            background-color: var(--dark-color);
-            color: var(--light-color);
+        .pricing-card h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #ff7a2d 100%);
+            color: white;
             text-align: center;
-            padding: 40px 0;
-            font-size: 14px;
         }
-        
-        .footer a {
-            color: var(--primary-color);
-            margin: 0 10px;
+
+        .final-cta h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
         }
-        
-        /* Mobil Sabit CTA (Sticky CTA) */
-        .mobile-sticky-cta {
-            display: none; /* Masaüstünde gizle */
+
+        .final-cta p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .cta-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sticky Mobile CTA */
+        .sticky-cta {
+            display: none;
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100%;
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: 10px;
+            right: 0;
+            padding: 15px 20px;
+            background: white;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .sticky-cta a {
+            display: block;
+            background: var(--primary);
+            color: white;
             text-align: center;
-            z-index: 1000;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
         }
 
-        .mobile-sticky-cta .cta-button {
-            width: 90%;
-            padding: 12px 20px;
-            font-size: 16px;
-        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
 
-        /* ****************** */
-        /* RESPONSIVE TASARIM */
-        /* ****************** */
-        @media (max-width: 992px) {
-            #hero h1 {
-                font-size: 38px;
+            .hero-text h1 {
+                font-size: 36px;
             }
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr); /* Tablette 2 sütun */
+
+            .ps-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
-            #problem-solution .split-content {
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .sticky-cta {
+                display: block;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .contact-info {
                 flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .section-padding {
-                padding: 60px 0;
-            }
-            #hero h1 {
-                font-size: 30px;
-            }
-            #hero p {
-                font-size: 18px;
-            }
-            .feature-grid {
-                grid-template-columns: 1fr; /* Mobilde tek sütun */
-            }
-            .header .cta-button {
-                display: none; /* Mobilde üst nav'daki CTA'yı gizle */
-            }
-            .mobile-sticky-cta {
-                display: block; /* Mobilde sticky CTA'yı göster */
-            }
-            .social-links {
-                flex-direction: column;
-                gap: 15px;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-
-    <header class="header">
+    <!-- Navigation -->
+    <nav>
         <div class="container">
             <div class="logo">Neo<span>Asistan</span></div>
-            <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
+            <a href="#randevu" class="nav-cta">Toplantı Randevusu Al</a>
         </div>
-    </header>
+    </nav>
 
-    <section id="hero" class="section-padding">
-        <div class="container content">
-            <h1>Müşteri Kaybetmeyi Durdurun. NeoAsistan ile Tanışın.</h1>
-            <p>7/24 kesintisiz destek, sepet kurtarma ve randevu yönetimi. Yapay zekâ ile satış gücünüzü anında artırın.</p>
-            <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
-            
-            <div class="visual-mockup">
-                [Video / Sade Animasyon / Ekran Kaydı Mockup Alanı]
-            </div>
-        </div>
-    </section>
-
-    <section id="problem-solution" class="section-padding">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h2 style="font-size: 36px; margin-bottom: 20px;">İşletmenizin Büyümesini Engelleyen Sorun ve Çözümü</h2>
-            
-            <div class="split-content">
-                <div class="problem">
-                    <h3 style="color: #d32f2f;"><i class="fa-solid fa-clock-rotate-left"></i> Geç Yanıt, Kayıp Müşteri Demektir.</h3>
-                    <p>Araştırmalar, anlık yanıt bekleyen müşterilerin %80'inin, 10 dakikadan uzun süre bekletildiğinde vazgeçtiğini gösteriyor.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-xmark" style="color: #d32f2f;"></i> Gece gelen mesajlara yanıt verememek.</li>
-                        <li><i class="fa-solid fa-xmark" style="color: #d32f2f;"></i> Tekrarlayan sorularla vakit kaybetmek.</li>
-                        <li><i class="fa-solid fa-xmark" style="color: #d32f2f;"></i> Yoğunlukta randevu ve satış fırsatlarını kaçırmak.</li>
-                    </ul>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Müşterileriniz <span>7/24</span> Yanıt Beklerken, Siz Uyuyorsunuz</h1>
+                    <p>NeoAsistan ile işletmeniz hiç durmadan müşterilerinizle konuşur, satış yapar ve randevu alır.</p>
+                    <a href="#randevu" class="cta-primary">Toplantı Randevusu Al</a>
                 </div>
-                <div class="solution">
-                    <h3 style="color: var(--primary-color);"><i class="fa-solid fa-robot"></i> NeoAsistan Farkı: Anlık, Akıllı, Kişiselleştirilmiş.</h3>
-                    <p>NeoAsistan, saniyeler içinde cevap verir. Müşteri geçmişini hatırlar ve her etkileşimi satışa dönüştürür.</p>
-                    <ul>
-                        <li><i class="fa-solid fa-check" style="color: #388e3c;"></i> 7/24 kesintisiz ve çok dilli destek.</li>
-                        <li><i class="fa-solid fa-check" style="color: #388e3c;"></i> Kendi verinizle eğitim, marka dilinizde konuşma.</li>
-                        <li><i class="fa-solid fa-check" style="color: #388e3c;"></i> Otomatik randevu, sepet kurtarma ve satış asistanlığı.</li>
-                    </ul>
+                <div class="hero-visual">
+                    <div class="demo-placeholder">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        <p>Video veya animasyon için alan</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="features" class="section-padding">
+    <!-- Problem Solution -->
+    <section class="problem-solution">
         <div class="container">
-            <h2 style="font-size: 36px; margin-bottom: 40px;">NeoAsistan'ın İşinize Güç Katacak Temel Yetenekleri</h2>
-            <div class="feature-grid">
-                
-                <div class="feature-card">
-                    <i class="fa-solid fa-brain"></i>
-                    <h4>Veriyle Eğitilmiş Yapay Zekâ</h4>
-                    <p>İşletmenizin kendi ürün, hizmet ve SSS verileriyle eğitilir. Marka dilinizde konuşur.</p>
+            <h2 class="section-title">Her Geç Yanıt, Kayıp Bir Müşteri</h2>
+            <div class="ps-grid">
+                <div class="ps-card problem-card">
+                    <h3>❌ Sorun</h3>
+                    <p>Müşteriler gece yarısı mesaj atıyor, hafta sonları sorular soruyor. Siz yanıt veremiyorsunuz. Her gecikmede müşteri rakibinize gidiyor.</p>
                 </div>
+                <div class="ps-card solution-card">
+                    <h3>✓ Çözüm</h3>
+                    <p>NeoAsistan markanızın dilinde konuşan, ürünlerinizi bilen ve hiç yorulmayan yapay zeka asistanınız. Müşterileriniz her zaman yanıt alır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Neden NeoAsistan?</h2>
+            <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fa-solid fa-memory"></i>
-                    <h4>Kişiselleştirilmiş İletişim</h4>
-                    <p>Müşteri geçmişini ve önceki konuşmaları hatırlar. Daha kişisel ve satış odaklı bir deneyim sunar.</p>
+                    <div class="feature-icon">🧠</div>
+                    <h3>Kendi Verilerinizle Eğitilir</h3>
+                    <p>İşletmenizin ürün, hizmet ve müşteri bilgilerini öğrenir. Sizin gibi konuşur.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <h4>Randevu Yönetimi</h4>
-                    <p>Müşteri ile konuşurken randevu alır, takviminize işler ve hatırlatmaları otomatik yapar.</p>
+                    <div class="feature-icon">💬</div>
+                    <h3>Çok Kanallı Entegrasyon</h3>
+                    <p>WhatsApp, Instagram, Telegram, TikTok, Web chat ve E-posta. Hepsinde aktif.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-cart-arrow-down"></i>
-                    <h4>Sepet Kurtarma ve Satış</h4>
-                    <p>Terk edilmiş sepetleri hatırlar, ek sorular sorar ve aktif olarak satış sürecinizi destekler.</p>
+                    <div class="feature-icon">📅</div>
+                    <h3>Akıllı Randevu Yönetimi</h3>
+                    <p>Randevuları otomatik alır, takviminize işler, hatırlatma gönderir.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-share-nodes"></i>
-                    <h4>Çoklu Kanal Entegrasyonu</h4>
-                    <p>WhatsApp, Instagram, Telegram, TikTok, Web chat ve E-posta ile tam entegrasyon.</p>
+                    <div class="feature-icon">🛒</div>
+                    <h3>Sepet Kurtarma</h3>
+                    <p>Sepeti terk eden müşterilere ulaşır, satışı tamamlamanıza yardımcı olur.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <h4>Detaylı Raporlama</h4>
-                    <p>Müşteri etkileşimlerini, dönüşüm oranlarını ve performansını detaylı raporlarla sunar.</p>
+                    <div class="feature-icon">🌍</div>
+                    <h3>Çok Dilli Destek</h3>
+                    <p>Global müşterilerinizle kendi dillerinde konuşur. 7/24 aktif.</p>
                 </div>
-                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Detaylı Raporlama</h3>
+                    <p>Müşteri davranışları, satış fırsatları ve performans metrikleri sunulur.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="chat-demo" class="section-padding">
+    <!-- Chat Demo -->
+    <section class="chat-demo">
         <div class="container">
-            <h2 style="font-size: 36px;">Bir İnsan Gibi Konuşur, Bir Robot Hızıyla Çözüm Üretir.</h2>
-            <div class="chat-simulation">
-                
-                <div class="message user-message">
-                    Merhaba, yeni çıkan X model ayakkabının fiyatı ve stok durumu hakkında bilgi alabilir miyim?
-                    <small>18:25</small>
+            <h2 class="section-title">NeoAsistan Nasıl Çalışır?</h2>
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="chat-avatar">NA</div>
+                    <div class="chat-info">
+                        <h4>NeoAsistan</h4>
+                        <p>Çevrimiçi</p>
+                    </div>
                 </div>
-                
-                <div class="message assistant-message">
-                    Merhaba! Ben NeoAsistan. Elbette yardımcı olabilirim. 😊 X modelinin güncel fiyatı **1850 TL** ve şu anda 36-44 arası tüm numaralarda stok mevcuttur. 
-                    <small>18:25</small>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message user">
+                        <div class="message-bubble">
+                            Merhaba, ürünleriniz hakkında bilgi alabilir miyim?
+                            <div class="message-time">14:32</div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="message user-message">
-                    Harika. Geçen hafta sipariş ettiğim bir ürün vardı. O kargoya verilmiş miydi?
-                    <small>18:26</small>
-                </div>
-
-                <div class="message assistant-message">
-                    Hemen kontrol ediyorum. Sizi tanıyorum: Mehmet Bey, 12345 nolu siparişiniz dün kargoya verilmiştir ve takip numarası: **TRN6789**. <br>Yeni ayakkabı için randevu ile deneme yapmak ister misiniz?
-                    <small>18:26</small>
-                </div>
-                
-                <div class="message user-message">
-                    Randevu harika olur. Cuma 16:00 uygun mu?
-                    <small>18:27</small>
-                </div>
-                
-                <div class="message assistant-message" style="border-left: 3px solid var(--primary-color);">
-                    Cuma 16:00 sizin için rezerve edilmiştir. Kısa süre içinde onay e-postası alacaksınız. Başka bir sorunuz var mı?
-                    <small>18:27 - ⚡ Randevu Otomatik Kayıt Edildi</small>
-                </div>
-                
             </div>
         </div>
     </section>
 
-    <section id="trust" class="section-padding">
+    <!-- Trust -->
+    <section class="trust">
         <div class="container">
-            <h2 style="font-size: 36px; margin-bottom: 20px;">Güvenilir Çözüm Ortağınız: Bize Her Yerden Ulaşın</h2>
-            <p>NeoAsistan, yüzlerce işletmenin müşteri deneyimini dönüştürdü. Sorularınız için bize dilediğiniz kanaldan yazın.</p>
-            
-            <div style="margin-top: 50px; padding: 20px; border: 1px dashed #ddd; border-radius: 8px; color: #777;">
-                [Referanslar / İş Ortağı Logoları / Müşteri Yorumları Alanı]
-            </div>
-            
-            <div class="social-links">
-                <a href="https://wa.me/5518573293" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp: 551 857 3293</a>
-                <a href="https://instagram.com/neoasistan" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram: @neoasistan</a>
+            <div class="trust-content">
+                <h2 class="section-title">İletişime Geçin</h2>
+                <p>Sorularınızı yanıtlamak ve işletmeniz için özel demo hazırlamak isteriz.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <a href="https://wa.me/905518573293">WhatsApp: 551 857 3293</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📷</span>
+                        <a href="https://instagram.com/neoasistan" target="_blank">Instagram: @neoasistan</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="offer" class="section-padding">
+    <!-- Pricing -->
+    <section class="pricing">
         <div class="container">
-            <div class="offer-box">
-                <h2>3 Gün Ücretsiz Deneme + Kurulum Desteği</h2>
-                <p>NeoAsistan'ın işinize katacağı değeri **risk almadan** test edin. Tüm entegrasyon ve kurulum sürecinizde yanınızdayız.</p>
-                <a href="#offer" class="cta-button" style="background-color: var(--light-color); color: var(--dark-color);">Toplantı Randevusu Al</a>
+            <h2 class="section-title">Risksiz Deneyin</h2>
+            <div class="pricing-card">
+                <div class="pricing-badge">Özel Teklif</div>
+                <h3>3 Gün Ücretsiz Deneme</h3>
+                <p>Kurulum ve entegrasyon desteği dahil. Kredi kartı gerekmez.</p>
+                <ul class="pricing-features">
+                    <li>Tam özellik erişimi</li>
+                    <li>Kişisel kurulum desteği</li>
+                    <li>Kendi verilerinizle eğitim</li>
+                    <li>Tüm kanal entegrasyonları</li>
+                    <li>Sınırsız mesaj</li>
+                </ul>
+                <a href="#randevu" class="cta-primary">Ücretsiz Demo İçin Randevu Al</a>
             </div>
         </div>
     </section>
-    
-    <section id="closing-cta" class="section-padding" style="text-align: center;">
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="randevu">
         <div class="container">
-            <h2 style="font-size: 36px; margin-bottom: 30px;">İşletmenizi 7/24 Konuşan, Satış Odaklı Bir Asistana Dönüştürün.</h2>
-            <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
+            <h2>İşletmenizi Büyütmeye Hazır Mısınız?</h2>
+            <p>7/24 müşteri ile konuşan bir asistana sahip olun</p>
+            <a href="https://wa.me/905518573293?text=Merhaba,%20NeoAsistan%20hakkında%20bilgi%20almak%20ve%20demo%20görmek%20istiyorum" class="cta-secondary">Toplantı Randevusu Al</a>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 NeoAsistan. Tüm hakları saklıdır. <a href="#">Gizlilik Politikası</a> | <a href="#">Kullanım Şartları</a></p>
-        </div>
-    </footer>
-    
-    <div class="mobile-sticky-cta">
-        <a href="#offer" class="cta-button">Toplantı Randevusu Al</a>
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta">
+        <a href="https://wa.me/905518573293?text=Merhaba,%20NeoAsistan%20hakkında%20bilgi%20almak%20ve%20demo%20görmek%20istiyorum">Toplantı Randevusu Al</a>
     </div>
 
+    <script>
+        // Chat animation
+        const messages = [
+            { type: 'user', text: 'Merhaba, ürünleriniz hakkında bilgi alabilir miyim?', time: '14:32' },
+            { type: 'bot', text: 'Merhaba! Tabii ki, size yardımcı olmaktan mutluluk duyarım. Hangi ürünümüz ilginizi çekiyor?', time: '14:32' },
+            { type: 'user', text: 'Premium pakete bakıyorum', time: '14:33' },
+            { type: 'bot', text: 'Premium paketimiz harika bir seçim! Tüm özellikleri içeriyor ve aylık 299 TL. Size özel bir demo randevusu ayarlayalım mı?', time: '14:33' },
+            { type: 'user', text: 'Evet olur, yarın müsait misiniz?', time: '14:34' },
+            { type: 'bot', text: 'Yarın için 10:00, 14:00 ve 16:00 saatlerinde randevumuz var. Hangisi sizin için uygun?', time: '14:34' }
+        ];
+
+        let currentMessage = 1;
+        const chatMessages = document.getElementById('chatMessages');
+
+        function addMessage() {
+            if (currentMessage < messages.length) {
+                const msg = messages[currentMessage];
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${msg.type}`;
+                messageDiv.innerHTML = `
+                    <div class="message-bubble">
+                        ${msg.text}
+                        <div class="message-time">${msg.time}</div>
+                    </div>
+                `;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                currentMessage++;
+                setTimeout(addMessage, 2000);
+            }
+        }
+
+        // Start chat animation when section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && currentMessage === 1) {
+                    setTimeout(addMessage, 1000);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.chat-demo'));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
